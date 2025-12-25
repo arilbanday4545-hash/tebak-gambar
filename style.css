@@ -1,0 +1,202 @@
+:root {
+  --space-bg: radial-gradient(circle at center, #1b2735 0%, #090a0f 100%);
+  --neon-blue: #00d2ff;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  background: var(--space-bg);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: white;
+}
+
+/* Background Galaxy */
+.stars,
+.twinkling {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.stars {
+  background: transparent url("https://www.transparenttextures.com/patterns/stardust.png") repeat;
+  z-index: -2;
+}
+.twinkling {
+  background: transparent url("https://www.transparenttextures.com/patterns/star-field.png") repeat;
+  z-index: -1;
+  animation: move-stars 200s linear infinite;
+}
+@keyframes move-stars {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+
+/* Karakter Animasi */
+.char-wrap {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.floating-char {
+  width: 100px;
+  animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px var(--neon-blue));
+}
+.char-bubble {
+  background: white;
+  color: #333;
+  padding: 5px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: bold;
+  margin-top: 5px;
+  position: relative;
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+/* Kotak Game 3D */
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 25px;
+  border-radius: 30px;
+  width: 90%;
+  max-width: 380px;
+  text-align: center;
+  margin: auto;
+}
+
+.glow-text {
+  font-family: "Bungee", cursive;
+  font-size: 35px;
+  background: linear-gradient(to right, #00d2ff, #9d50bb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.page {
+  display: none;
+}
+.active {
+  display: block;
+  animation: fadeIn 0.5s;
+}
+
+button {
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 100%;
+}
+.btn-main-start {
+  background: linear-gradient(45deg, #00d2ff, #3a7bd5);
+  color: white;
+  animation: pulse 2s infinite;
+}
+.btn-gass {
+  background: #2ed573;
+  color: white;
+}
+.btn-create {
+  background: #1e90ff;
+  color: white;
+}
+.btn-logout {
+  background: #95a5a6;
+  color: white;
+  margin-top: 10px;
+}
+.btn-reset {
+  background: transparent;
+  color: #aaa;
+  text-decoration: underline;
+  font-size: 11px;
+  margin-top: 10px;
+}
+
+.emoji-box {
+  font-size: 55px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 20px;
+  margin: 10px 0;
+}
+.hint-text {
+  color: var(--neon-blue);
+  letter-spacing: 4px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.stats-box {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-around;
+  margin: 15px 0;
+}
+.lvl-circle {
+  width: 60px;
+  height: 60px;
+  background: var(--neon-blue);
+  border-radius: 50%;
+  line-height: 60px;
+  font-size: 30px;
+  margin: 10px auto;
+  font-family: "Bungee";
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+}
+.main-footer {
+  padding: 15px;
+  font-size: 10px;
+  text-align: center;
+  opacity: 0.5;
+  margin-top: auto;
+}
