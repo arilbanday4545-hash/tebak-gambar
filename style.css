@@ -1,0 +1,215 @@
+:root {
+  --space-bg: radial-gradient(circle at center, #1b2735 0%, #090a0f 100%);
+  --neon-blue: #00d2ff;
+  --neon-purple: #9d50bb;
+}
+
+/* Standarisasi Box Model agar padding tidak merusak ukuran */
+* {
+  box-sizing: border-box;
+  touch-action: manipulation;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  background: var(--space-bg);
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: white;
+}
+
+/* Animasi Background Luar Angkasa */
+.stars,
+.twinkling {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.stars {
+  background: transparent url("https://www.transparenttextures.com/patterns/stardust.png") repeat;
+  z-index: -2;
+}
+.twinkling {
+  background: transparent url("https://www.transparenttextures.com/patterns/star-field.png") repeat;
+  z-index: -1;
+  animation: move-stars 200s linear infinite;
+}
+@keyframes move-stars {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+
+/* Container Game yang Fleksibel di HP */
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  border-radius: 25px;
+  width: 90%; /* Kotak tidak akan menempel ke pinggir HP */
+  max-width: 380px;
+  text-align: center;
+  margin: auto;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  z-index: 5;
+  position: relative;
+}
+
+/* Karakter & Bubble */
+.char-wrap {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.floating-char {
+  width: 80px;
+  animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px var(--neon-blue));
+}
+.char-bubble {
+  background: white;
+  color: #333;
+  padding: 5px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: bold;
+  margin-top: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Judul & Teks */
+.glow-text {
+  font-family: "Bungee", cursive;
+  font-size: 26px;
+  margin: 5px 0;
+  background: linear-gradient(to right, #00d2ff, #9d50bb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.sub-text {
+  font-size: 11px;
+  opacity: 0.8;
+  margin-bottom: 15px;
+}
+
+/* Input & Tombol */
+button {
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 8px;
+  transition: 0.2s;
+}
+button:active {
+  transform: scale(0.98);
+} /* Efek saat ditekan jari */
+
+input[type="text"],
+select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 10px;
+  background: rgba(255, 255, 255, 0.95);
+  font-size: 16px; /* Font 16px mencegah auto-zoom di iPhone */
+  color: #333;
+}
+
+.emoji-box {
+  font-size: 50px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 20px;
+  margin: 10px 0;
+}
+
+.hint-text {
+  color: var(--neon-blue);
+  letter-spacing: 3px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* HUD Info Gmae */
+.hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.badge {
+  background: var(--neon-blue);
+  padding: 4px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+}
+.score-pill {
+  color: #f1c40f;
+  font-weight: bold;
+}
+
+/* Footer */
+.main-footer {
+  padding: 15px;
+  font-size: 9px;
+  text-align: center;
+  opacity: 0.5;
+  margin-top: auto;
+}
+
+/* Animasi */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.page {
+  display: none;
+  animation: fadeIn 0.4s;
+}
+.active {
+  display: block;
+}
+.shake {
+  animation: shake 0.4s;
+}
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-8px);
+  }
+  75% {
+    transform: translateX(8px);
+  }
+}
